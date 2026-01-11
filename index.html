@@ -3,93 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zero Quantum Frequency™</title>
+<title>Quantum Insights · Zero Quantum Frequency™</title>
 
 <style>
-    body {
-        margin: 0;
-        background: #0a0f1c;
-        color: #eaeaea;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+body{
+  margin:0;
+  background:#0a0f1c;
+  color:#e6e6e6;
+  font-family:system-ui,-apple-system,sans-serif;
+}
 
-    .app {
-        max-width: 480px;
-        margin: auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-    }
+.app{
+  max-width:480px;
+  margin:auto;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
 
-    .header {
-        text-align: center;
-        padding: 18px 16px 12px;
-        border-bottom: 1px solid #1c2340;
-    }
+.header{
+  text-align:center;
+  padding:16px;
+  font-size:18px;
+  font-weight:600;
+  border-bottom:1px solid #1c2340;
+}
 
-    .header h1 {
-        margin: 0;
-        font-size: 20px;
-        font-weight: 600;
-    }
+.content{
+  flex:1;
+  padding:18px;
+  line-height:1.75;
+  font-size:15px;
+}
 
-    .nav {
-        display: flex;
-        justify-content: space-around;
-        padding: 10px 0;
-        border-bottom: 1px solid #1c2340;
-        font-size: 14px;
-    }
+.page{
+  display:none;
+}
 
-    .nav button {
-        background: none;
-        border: none;
-        color: #9fa8ff;
-        font-size: 14px;
-        cursor: pointer;
-    }
+.page.active{
+  display:block;
+}
 
-    .content {
-        flex: 1;
-        padding: 18px;
-        line-height: 1.75;
-        font-size: 15px;
-    }
+p{
+  margin-bottom:16px;
+  color:#d6d6d6;
+}
 
-    h2 {
-        font-size: 17px;
-        margin-top: 22px;
-        margin-bottom: 10px;
-        color: #ffffff;
-    }
+.nav{
+  display:flex;
+  justify-content:space-between;
+  padding:12px;
+  border-top:1px solid #1c2340;
+}
 
-    p {
-        margin-bottom: 14px;
-        color: #d6d6d6;
-    }
+.nav button{
+  background:#2a2f45;
+  color:#f5d88a;
+  border:none;
+  padding:10px 16px;
+  border-radius:6px;
+  font-size:14px;
+}
 
-    .section {
-        display: none;
-    }
-
-    .section.active {
-        display: block;
-    }
-
-    .footer {
-        text-align: center;
-        font-size: 12px;
-        color: #777;
-        padding: 14px 10px;
-        border-top: 1px solid #1c2340;
-    }
+.footer{
+  text-align:center;
+  font-size:12px;
+  color:#777;
+  padding:10px;
+}
 </style>
 
 <script>
-    function show(id) {
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-    }
+let current = 1;
+function showPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p'+n).classList.add('active');
+  current = n;
+}
+function nextPage(){
+  if(current < 3) showPage(current+1);
+}
+function prevPage(){
+  if(current > 1) showPage(current-1);
+}
 </script>
 
 </head>
@@ -97,90 +93,82 @@
 
 <div class="app">
 
-    <div class="header">
-        <h1>Zero Quantum Frequency™</h1>
+  <div class="header">
+    Quantum Insight
+  </div>
+
+  <div class="content">
+
+    <!-- PAGE 1 -->
+    <div id="p1" class="page active">
+      <p>
+        जब मन निरंतर विचारों में उलझा रहता है,
+        तब वह वास्तविकता को नहीं,
+        बल्कि अपने ही विचारों की प्रतिध्वनि को देखता है।
+      </p>
+
+      <p>
+        Quantum दृष्टि में,
+        शून्य कोई खालीपन नहीं है —
+        वह वह अवस्था है
+        जहाँ सभी संभावनाएँ मौन रूप में विद्यमान रहती हैं।
+      </p>
+
+      <p>
+        Zero Quantum Frequency™
+        उसी शून्य की ओर संकेत करता है।
+      </p>
     </div>
 
-    <div class="nav">
-        <button onclick="show('about')">About Us</button>
-        <button onclick="show('quantum')">Quantum Insight</button>
+    <!-- PAGE 2 -->
+    <div id="p2" class="page">
+      <p>
+        अधिकांश मानसिक अशांति
+        परिस्थितियों से नहीं,
+        बल्कि उनके प्रति हमारी प्रतिक्रिया से जन्म लेती है।
+      </p>
+
+      <p>
+        जब प्रतिक्रिया रुकती है,
+        तब चेतना स्वतः संतुलन में आ जाती है।
+      </p>
+
+      <p>
+        यही वह बिंदु है
+        जहाँ विचार समाप्त होते हैं
+        और स्पष्टता प्रारंभ होती है।
+      </p>
     </div>
 
-    <div class="content">
+    <!-- PAGE 3 -->
+    <div id="p3" class="page">
+      <p>
+        Inner Order कोई प्रयास नहीं है,
+        बल्कि अनावश्यक संघर्ष का अभाव है।
+      </p>
 
-        <!-- ABOUT US -->
-        <div id="about" class="section active">
-            <p>
-                Zero Quantum Frequency™ एक शांत और विचारशील प्रयास है —
-                जहाँ शब्दों के माध्यम से चेतना की मूल अवस्था को समझने का
-                एक निमंत्रण दिया जाता है।
-            </p>
+      <p>
+        जब व्यक्ति स्वयं को
+        हर स्थिति का केंद्र मानना छोड़ देता है,
+        तब जीवन सहज हो जाता है।
+      </p>
 
-            <p>
-                यह कोई त्वरित समाधान, चमत्कार या दावा करने वाला मंच नहीं है।
-                यह उन लोगों के लिए है जो शोर से दूर,
-                स्पष्टता के साथ जीवन को समझना चाहते हैं।
-            </p>
-
-            <p>
-                यहाँ प्रस्तुत विचार आधुनिक quantum समझ से प्रेरित हैं,
-                भारतीय ज्ञान परंपरा की गहराई से जुड़े हैं,
-                और व्यक्ति को स्वयं के भीतर देखने के लिए प्रेरित करते हैं।
-            </p>
-
-            <p>
-                Zero Quantum Frequency™ का उद्देश्य सिखाना नहीं,
-                बल्कि संकेत देना है —
-                ताकि पाठक स्वयं अपनी अनुभूति तक पहुँच सके।
-            </p>
-
-            <h2>About the Author</h2>
-
-            <p>
-                यह प्रस्तुति Gandharwa Anand द्वारा दी गई है —
-                जो चेतना, जीवन-दृष्टि और भारतीय दर्शन पर लेखन के लिए जाने जाते हैं।
-            </p>
-
-            <p>
-                जो पाठक इन विचारों को और गहराई से समझना चाहते हैं,
-                उनके लिए लेखक की कुछ मूल अवधारणाएँ
-                एक Kindle पुस्तक के रूप में भी उपलब्ध हैं।
-            </p>
-        </div>
-
-        <!-- QUANTUM INSIGHT -->
-        <div id="quantum" class="section">
-            <p>
-                जब मन निरंतर विचारों में उलझा रहता है,
-                तब वह वास्तविकता को नहीं,
-                बल्कि अपने ही प्रतिबिंब को देखता है।
-            </p>
-
-            <p>
-                Quantum दृष्टि में शून्य का अर्थ अभाव नहीं है —
-                वह वह अवस्था है जहाँ संभावनाएँ जन्म लेती हैं,
-                बिना किसी प्रयास के।
-            </p>
-
-            <p>
-                Zero Quantum Frequency™
-                उस क्षण की ओर संकेत करता है
-                जहाँ प्रतिक्रिया से पहले शांति होती है,
-                और पहचान से पहले उपस्थिति।
-            </p>
-
-            <p>
-                इसी मौन में स्पष्टता अपने आप प्रकट होती है —
-                बिना किसी प्रयास के,
-                बिना किसी संघर्ष के।
-            </p>
-        </div>
-
+      <p>
+        Zero Quantum Frequency™
+        इसी सहज अवस्था की स्मृति है।
+      </p>
     </div>
 
-    <div class="footer">
-        Zero Quantum Frequency™ · Clarity over noise
-    </div>
+  </div>
+
+  <div class="nav">
+    <button onclick="prevPage()">◀ Prev</button>
+    <button onclick="nextPage()">Next ▶</button>
+  </div>
+
+  <div class="footer">
+    Zero Quantum Frequency™ · Clarity over noise
+  </div>
 
 </div>
 
