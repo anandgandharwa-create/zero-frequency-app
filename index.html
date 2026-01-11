@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero Quantum Frequency™</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #0b0f1a;
+        color: #e6e6e6;
+        font-family: "Georgia", serif;
+        line-height: 1.7;
+    }
+
+    .container {
+        max-width: 720px;
+        margin: auto;
+        padding: 24px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 8px;
+        color: #f1f1f1;
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-top: 32px;
+        color: #d6d6d6;
+    }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 16px;
+        color: #cccccc;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #1f2535;
+        padding-bottom: 12px;
+    }
+
+    .nav a {
+        color: #9aa4ff;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .nav a:hover {
+        text-decoration: underline;
+    }
+
+    .section {
+        display: none;
+    }
+
+    .section.active {
+        display: block;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 13px;
+        color: #777;
+        text-align: center;
+    }
+</style>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(sec => {
+            sec.classList.remove('active');
+        });
+        document.getElementById(id).classList.add('active');
+    }
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="nav">
+        <a href="#" onclick="showSection('about')">About Us</a>
+        <a href="#" onclick="showSection('quantum')">Quantum Insight</a>
+    </div>
+
+    <!-- ABOUT US -->
+    <div id="about" class="section active">
+        <h1>Zero Quantum Frequency™</h1>
+
+        <p>
+            Zero Quantum Frequency™ एक सरल, शांत और विचारशील प्रयास है —
+            जहाँ शब्दों के माध्यम से चेतना की मूल अवस्था को समझने का invitation दिया जाता है।
+        </p>
+
+        <p>
+            यह app किसी त्वरित समाधान, चमत्कार या दावे का मंच नहीं है।
+            यह उन लोगों के लिए है जो शोर से दूर,
+            स्पष्टता के साथ सोचना और समझना चाहते हैं।
+        </p>
+
+        <p>
+            यहाँ प्रस्तुत विचार आधुनिक quantum समझ से प्रेरित हैं,
+            भारतीय ज्ञान परंपरा की गहराई से जुड़े हैं,
+            और व्यक्ति को स्वयं के भीतर देखने के लिए प्रेरित करते हैं।
+        </p>
+
+        <p>
+            Zero Quantum Frequency™ का उद्देश्य सिखाना नहीं,
+            बल्कि संकेत देना है —
+            ताकि पाठक स्वयं अपनी अनुभूति तक पहुँच सके।
+        </p>
+
+        <h2>About the Author</h2>
+
+        <p>
+            यह प्रस्तुति Gandharwa Anand द्वारा दी गई है —
+            जो चेतना, जीवन-दृष्टि और भारतीय दर्शन पर लेखन के लिए जाने जाते हैं।
+        </p>
+
+        <p>
+            जो पाठक इन विचारों को और गहराई से समझना चाहते हैं,
+            उनके लिए लेखक की कुछ मूल अवधारणाएँ
+            एक Kindle पुस्तक के रूप में भी उपलब्ध हैं।
+        </p>
+    </div>
+
+    <!-- QUANTUM INSIGHT -->
+    <div id="quantum" class="section">
+        <h1>Quantum Insight</h1>
+
+        <p>
+            जब मन निरंतर गतिविधि में रहता है,
+            तब वह वास्तविकता को नहीं,
+            बल्कि केवल अपने ही विचारों को देखता है।
+        </p>
+
+        <p>
+            Quantum दृष्टि में,
+            शून्य कोई अभाव नहीं,
+            बल्कि संभावनाओं की वह अवस्था है
+            जहाँ सब कुछ जन्म ले सकता है।
+        </p>
+
+        <p>
+            Zero Frequency का अर्थ है —
+            प्रतिक्रिया से पहले की स्थिति,
+            विचार से पहले की शांति,
+            और पहचान से पहले की उपस्थिति।
+        </p>
+
+        <p>
+            यही वह स्थान है
+            जहाँ स्पष्टता अपने आप प्रकट होती है।
+        </p>
+    </div>
+
+    <footer>
+        Zero Quantum Frequency™ · Clarity over noise
+    </footer>
+
+</div>
+
+</body>
+</html>
