@@ -70,4 +70,105 @@ button{
   cursor:pointer;
 }
 
-button.seco
+button.secondary{
+  background:transparent;
+  color:var(--accent);
+  margin-top:14px;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+  margin-top:18px;
+}
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <div class="brand">Zero Quantum Frequency™</div>
+
+  <!-- STEP 1 -->
+  <div class="card" id="step1">
+    <div class="message">
+      Take one minute.<br>
+      Nothing else is required.
+    </div>
+    <button onclick="goStep(2)">Enter</button>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="card hidden" id="step2">
+    <div class="day" id="dayText"></div>
+    <div class="message" id="freqText"></div>
+    <button onclick="startPause()">Pause 30 seconds</button>
+    <div id="timer" class="footer hidden">30</div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="card hidden" id="step3">
+    <div class="message">
+      Nothing to carry.<br>
+      Nothing to solve.
+    </div>
+    <button onclick="goStep(1)">Done</button>
+  </div>
+
+  <div class="footer">Return to zero.</div>
+</div>
+
+<script>
+const frequencies=[
+ "आज कुछ ठीक करने की ज़रूरत नहीं है।",
+ "जो है, बस उसे महसूस करो।",
+ "शांत रहने की कोशिश मत करो।",
+ "आज सिर्फ़ सुनो।",
+ "हर उत्तर ज़रूरी नहीं होता।",
+ "मौन भी एक स्थिति है।",
+ "कुछ न करना भी पर्याप्त है।"
+];
+
+// day logic
+let start=localStorage.getItem("zqf_start");
+if(!start){
+  start=new Date().toDateString();
+  localStorage.setItem("zqf_start",start);
+}
+const days=Math.floor(
+ (new Date()-new Date(start))/(1000*60*60*24)
+);
+const day=(days%21)+1;
+document.getElementById("dayText").innerText="Day "+day;
+document.getElementById("freqText").innerText=
+  frequencies[day % frequencies.length];
+
+// navigation
+function goStep(n){
+  document.querySelectorAll(".card").forEach(c=>c.classList.add("hidden"));
+  document.getElementById("step"+n).classList.remove("hidden");
+}
+
+// pause timer
+function startPause(){
+  let t=30;
+  const timer=document.getElementById("timer");
+  timer.classList.remove("hidden");
+  timer.innerText=t;
+
+  const interval=setInterval(()=>{
+    t--;
+    timer.innerText=t;
+    if(t<=0){
+      clearInterval(interval);
+      timer.classList.add("hidden");
+      goStep(3);
+    }
+  },1000);
+}
+</script>
+
+</body>
+</html>
