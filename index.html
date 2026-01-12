@@ -36,7 +36,6 @@ body{
   border-radius:22px;
   padding:26px 22px 30px;
   box-shadow:0 25px 45px rgba(0,0,0,.45);
-  text-align:center;
 }
 
 .hidden{display:none}
@@ -45,6 +44,7 @@ body{
   font-size:22px;
   line-height:1.5;
   margin-bottom:22px;
+  text-align:center;
 }
 
 .option{
@@ -64,16 +64,19 @@ body{
   border-color:#7a88ff;
 }
 
-.result-title{
-  font-size:18px;
-  margin-bottom:14px;
-  color:#7a88ff;
+.section{
+  margin-bottom:16px;
 }
 
-.result-text{
+.section h4{
+  font-size:13px;
+  color:#7a88ff;
+  margin-bottom:6px;
+}
+
+.section p{
   font-size:14.5px;
   line-height:1.6;
-  text-align:left;
   opacity:.95;
 }
 
@@ -94,8 +97,7 @@ body{
   <!-- PAGE 1 -->
   <div class="card" id="page1">
     <div class="title">
-      Understand your current<br>
-      inner frequency
+      Check your current<br>inner frequency
     </div>
     <button class="option" onclick="goPage(2)">
       Check Your Frequency
@@ -104,27 +106,34 @@ body{
 
   <!-- PAGE 2 -->
   <div class="card hidden" id="page2">
-    <div class="title">
-      अभी अपनी स्थिति चुनें
-    </div>
-    <button class="option" onclick="showResult(0)">
-      अपनी अनुसार / Neutral
-    </button>
-    <button class="option" onclick="showResult(1)">
-      मन भारी / उलझा हुआ
-    </button>
-    <button class="option" onclick="showResult(2)">
-      मन तेज / बेचैन
-    </button>
+    <div class="title">अपनी वर्तमान स्थिति चुनें</div>
+    <button class="option" onclick="showResult(0)">अपनी अनुसार / Neutral</button>
+    <button class="option" onclick="showResult(1)">मन भारी / उलझा हुआ</button>
+    <button class="option" onclick="showResult(2)">मन तेज / बेचैन</button>
   </div>
 
   <!-- PAGE 3 -->
   <div class="card hidden" id="page3">
-    <div class="result-title" id="freqLabel"></div>
-    <div class="result-text" id="resultText"></div>
-    <button class="option" style="margin-top:18px" onclick="goPage(1)">
-      Check Again
-    </button>
+    <div class="section">
+      <h4 id="freqLabel"></h4>
+    </div>
+
+    <div class="section">
+      <h4>Technical Insight</h4>
+      <p id="techText"></p>
+    </div>
+
+    <div class="section">
+      <h4>Awareness Insight</h4>
+      <p id="gyanText"></p>
+    </div>
+
+    <div class="section">
+      <h4>Gentle Guidance</h4>
+      <p id="guideText"></p>
+    </div>
+
+    <button class="option" onclick="goPage(1)">Check Again</button>
   </div>
 
   <div class="footer">Frequency is not emotion. It is signal.</div>
@@ -138,75 +147,73 @@ function goPage(n){
   document.getElementById("page"+n).classList.remove("hidden");
 }
 
-const results = [
+function pick(arr){
+  return arr[Math.floor(Math.random()*arr.length)];
+}
+
+const data = [
   {
     label:"Current Frequency: Neutral / Mixed",
-    text:`आप इस समय किसी एक extreme frequency में नहीं हैं।
-यह स्थिति अक्सर तब होती है जब mind कई छोटे signals को एक साथ process कर रहा होता है।
-Technically, यह state तब बनती है जब attention stable है, लेकिन fully anchored नहीं है।
-
-इस अवस्था में व्यक्ति न तो बहुत शांत होता है, न बहुत disturbed।
-Brain के perspective से देखें तो यह mid-level cognitive load की स्थिति है,
-जहाँ सोच चल रही होती है, लेकिन overwhelm नहीं होता।
-
-यह frequency खराब नहीं है।
-असल में, यहीं से clarity develop होती है।
-अगर चाहें तो इस समय बहुत बड़े निर्णय लेने की बजाय,
-थोड़ी observation की स्थिति में रहना उपयोगी होता है।
-
-ZQF इस state को “transition frequency” मानता है —
-जहाँ से व्यक्ति या तो noise में जा सकता है,
-या clarity की ओर move कर सकता है।
-`
+    tech:[
+      "This state indicates moderate cognitive load where attention is active but not overloaded.",
+      "Neurologically, this reflects a balanced interaction between focus and background processing.",
+      "This frequency often appears during transitions between tasks or thoughts."
+    ],
+    gyan:[
+      "यह अवस्था कोई समस्या नहीं है। यह बदलाव का संकेत है।",
+      "यहीं से स्पष्टता या भ्रम – दोनों की दिशा तय होती है।",
+      "Neutral होना stagnation नहीं, potential है।"
+    ],
+    guide:[
+      "इस समय observation को action से पहले रखें।",
+      "बड़े निर्णय टालना उपयोगी हो सकता है।",
+      "कुछ क्षण बस देखने दें, बदलने की ज़रूरत नहीं।"
+    ]
   },
   {
     label:"Current Frequency: Heavy / Diffused",
-    text:`इस समय आपकी frequency heavy दिखाई देती है।
-ऐसा अक्सर तब होता है जब mind unresolved information या emotional load carry कर रहा होता है।
-यह कोई कमजोरी नहीं है, बल्कि एक संकेत है कि system overloaded है।
-
-Technical रूप से, यह स्थिति तब बनती है जब attention fragmented हो जाता है
-और brain बार-बार past या future data को access करता है।
-इससे present moment की signal strength कम हो जाती है।
-
-इस अवस्था में problem solve करने की कोशिश
-अक्सर और अधिक थकान पैदा करती है।
-ZQF के अनुसार, इस frequency में सबसे उपयोगी चीज़
-कोई solution नहीं, बल्कि load को पहचानना है।
-
-जब awareness load को देख लेती है,
-तो system अपने आप recalibrate होने लगता है।
-`
+    tech:[
+      "This suggests fragmented attention caused by unresolved mental or emotional load.",
+      "The brain is processing multiple background loops, reducing present clarity.",
+      "Such states often arise from information overload rather than weakness."
+    ],
+    gyan:[
+      "भारीपन विरोध करने से नहीं, देखने से हल्का होता है।",
+      "यह संकेत है कि system अधिक उठा रहा है।",
+      "हर बोझ को तुरंत उतारना आवश्यक नहीं।"
+    ],
+    guide:[
+      "इस अवस्था में खुद से अपेक्षा कम रखें।",
+      "अभी समाधान नहीं, space ज़्यादा उपयोगी है।",
+      "थोड़ा slowing down पूरी दिशा बदल सकता है।"
+    ]
   },
   {
     label:"Current Frequency: Overactive / High Noise",
-    text:`आपकी वर्तमान frequency तेज और overactive प्रतीत होती है।
-यह स्थिति तब बनती है जब mind लगातार react कर रहा होता है,
-बिना pause के।
-
-Neurological स्तर पर,
-यह high stimulation और fast switching का संकेत है।
-Attention बार-बार एक thought से दूसरे thought पर jump करता है,
-जिससे internal noise बढ़ जाता है।
-
-इस frequency में व्यक्ति को लगता है कि उसे कुछ करना ही होगा,
-लेकिन paradox यह है कि action यहाँ clarity नहीं लाता।
-
-ZQF इस state को warning नहीं,
-बल्कि information मानता है।
-यह signal बताता है कि system को
-speed नहीं, grounding की आवश्यकता है।
-
-इस अवस्था में थोड़ा slowing down
-पूरे pattern को बदल सकता है।
-`
+    tech:[
+      "This reflects high stimulation and rapid thought-switching patterns.",
+      "Attention is reactive, not settled, leading to internal noise.",
+      "The system is fast, but not grounded."
+    ],
+    gyan:[
+      "तेज़ी हमेशा स्पष्टता नहीं लाती।",
+      "Noise भी एक signal है, शत्रु नहीं।",
+      "रुकना हार नहीं, recalibration है।"
+    ],
+    guide:[
+      "इस समय speed नहीं, grounding सहायक है।",
+      "एक छोटा pause पूरे loop को बदल सकता है।",
+      "कम input ज़्यादा clarity ला सकता है।"
+    ]
   }
 ];
 
 function showResult(i){
-  const r = results[i];
-  document.getElementById("freqLabel").innerText = r.label;
-  document.getElementById("resultText").innerText = r.text;
+  const d = data[i];
+  document.getElementById("freqLabel").innerText = d.label;
+  document.getElementById("techText").innerText = pick(d.tech);
+  document.getElementById("gyanText").innerText = pick(d.gyan);
+  document.getElementById("guideText").innerText = pick(d.guide);
   goPage(3);
 }
 </script>
