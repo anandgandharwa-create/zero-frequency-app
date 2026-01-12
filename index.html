@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Zero Quantum Frequency™ – Daily</title>
+<title>Zero Quantum Frequency™</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -10,44 +10,29 @@
 
 body{
   height:100vh;
-  background:radial-gradient(circle at top,#1b1b2f,#0b0b12);
+  background:radial-gradient(circle at top,#1c1c30,#0b0b12);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  color:#ffffff;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
 }
 
 .app{
   width:100%;
-  max-width:360px;
+  max-width:380px;
   padding:20px;
 }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:16px;
-}
-
-.brand{
-  font-size:15px;
+.header{
+  text-align:center;
+  font-size:16px;
   opacity:.85;
-}
-
-.lang{
-  font-size:12px;
-  padding:6px 10px;
-  border-radius:10px;
-  border:1px solid #444;
-  background:transparent;
-  color:#fff;
-  cursor:pointer;
+  margin-bottom:18px;
 }
 
 .card{
-  background:linear-gradient(180deg,#1c1c2c,#14141f);
+  background:linear-gradient(180deg,#1d1d2e,#14141f);
   border-radius:22px;
   padding:26px 22px 30px;
   box-shadow:0 25px 45px rgba(0,0,0,.45);
@@ -56,32 +41,40 @@ body{
 
 .hidden{display:none}
 
-.day{
-  font-size:13px;
-  opacity:.65;
-  margin-bottom:14px;
+.title{
+  font-size:22px;
+  line-height:1.5;
+  margin-bottom:22px;
 }
 
-.message{
-  font-size:21px;
-  line-height:1.55;
-  margin-bottom:26px;
-}
-
-button.main{
-  background:#7a88ff;
-  border:none;
+.option{
+  width:100%;
+  margin:10px 0;
+  padding:14px;
   border-radius:14px;
-  padding:14px 24px;
-  font-size:15px;
+  border:1px solid #444;
+  background:transparent;
   color:#fff;
+  font-size:15px;
   cursor:pointer;
 }
 
-.timer{
-  margin-top:14px;
-  font-size:14px;
-  opacity:.7;
+.option:hover{
+  background:#7a88ff;
+  border-color:#7a88ff;
+}
+
+.result-title{
+  font-size:18px;
+  margin-bottom:14px;
+  color:#7a88ff;
+}
+
+.result-text{
+  font-size:14.5px;
+  line-height:1.6;
+  text-align:left;
+  opacity:.95;
 }
 
 .footer{
@@ -96,133 +89,126 @@ button.main{
 <body>
 
 <div class="app">
-  <div class="topbar">
-    <div class="brand">Zero Quantum Frequency™</div>
-    <button class="lang" onclick="toggleLang()">HI / EN</button>
+  <div class="header">Zero Quantum Frequency™</div>
+
+  <!-- PAGE 1 -->
+  <div class="card" id="page1">
+    <div class="title">
+      Understand your current<br>
+      inner frequency
+    </div>
+    <button class="option" onclick="goPage(2)">
+      Check Your Frequency
+    </button>
   </div>
 
-  <!-- STEP 1 -->
-  <div class="card" id="step1">
-    <div class="message" id="welcomeText"></div>
-    <button class="main" onclick="showStep(2)" id="enterBtn"></button>
+  <!-- PAGE 2 -->
+  <div class="card hidden" id="page2">
+    <div class="title">
+      अभी अपनी स्थिति चुनें
+    </div>
+    <button class="option" onclick="showResult(0)">
+      अपनी अनुसार / Neutral
+    </button>
+    <button class="option" onclick="showResult(1)">
+      मन भारी / उलझा हुआ
+    </button>
+    <button class="option" onclick="showResult(2)">
+      मन तेज / बेचैन
+    </button>
   </div>
 
-  <!-- STEP 2 -->
-  <div class="card hidden" id="step2">
-    <div class="day" id="dayText"></div>
-    <div class="message" id="freqText"></div>
-    <button class="main" onclick="startPause()" id="pauseBtn"></button>
-    <div class="timer hidden" id="timer">30</div>
+  <!-- PAGE 3 -->
+  <div class="card hidden" id="page3">
+    <div class="result-title" id="freqLabel"></div>
+    <div class="result-text" id="resultText"></div>
+    <button class="option" style="margin-top:18px" onclick="goPage(1)">
+      Check Again
+    </button>
   </div>
 
-  <!-- STEP 3 -->
-  <div class="card hidden" id="step3">
-    <div class="message" id="closeText"></div>
-    <button class="main" onclick="showStep(1)" id="doneBtn"></button>
-  </div>
-
-  <div class="footer" id="footerText"></div>
+  <div class="footer">Frequency is not emotion. It is signal.</div>
 </div>
 
 <script>
-let lang = localStorage.getItem("zqf_lang") || "hi";
-
-const text = {
-  hi:{
-    welcome:"एक मिनट रुकिए।<br>और कुछ करने की ज़रूरत नहीं।",
-    enter:"शुरू करें",
-    pause:"30 सेकंड रुकें",
-    close:"कुछ पकड़ना नहीं है।<br>कुछ हल करना नहीं है।",
-    done:"पूरा हुआ",
-    footer:"शून्य की ओर लौटें।",
-    freq:[
-      "आज कुछ ठीक करने की ज़रूरत नहीं है।",
-      "जो है, बस उसे महसूस करो।",
-      "शांत रहने की कोशिश मत करो।",
-      "आज सिर्फ़ सुनो।",
-      "हर उत्तर ज़रूरी नहीं होता।",
-      "मौन भी एक स्थिति है।",
-      "कुछ न करना भी पर्याप्त है।",
-      "रुकना भी एक क्रिया है।",
-      "आज स्वयं को हल्का होने दो।",
-      "हर दिन शून्य से नया है।"
-    ]
-  },
-  en:{
-    welcome:"Take one minute.<br>Nothing else is required.",
-    enter:"Enter",
-    pause:"Pause 30 seconds",
-    close:"Nothing to carry.<br>Nothing to solve.",
-    done:"Done",
-    footer:"Return to zero.",
-    freq:[
-      "There is nothing to fix today.",
-      "Just notice what is.",
-      "Do not try to be calm.",
-      "Just listen today.",
-      "Not every answer is needed.",
-      "Silence is also a state.",
-      "Doing nothing is enough.",
-      "Pausing is also an action.",
-      "Let yourself feel lighter today.",
-      "Each day begins from zero."
-    ]
-  }
-};
-
-// day logic
-let start = localStorage.getItem("zqf_start");
-if(!start){
-  start = new Date().toDateString();
-  localStorage.setItem("zqf_start", start);
-}
-const diff = Math.floor((new Date()-new Date(start))/(1000*60*60*24));
-const day = (diff % 10);
-
-// apply text
-function applyLang(){
-  localStorage.setItem("zqf_lang",lang);
-  document.getElementById("welcomeText").innerHTML=text[lang].welcome;
-  document.getElementById("enterBtn").innerText=text[lang].enter;
-  document.getElementById("pauseBtn").innerText=text[lang].pause;
-  document.getElementById("closeText").innerHTML=text[lang].close;
-  document.getElementById("doneBtn").innerText=text[lang].done;
-  document.getElementById("footerText").innerText=text[lang].footer;
-  document.getElementById("dayText").innerText="Day "+(day+1);
-  document.getElementById("freqText").innerText=text[lang].freq[day];
-}
-
-function toggleLang(){
-  lang = lang==="hi" ? "en" : "hi";
-  applyLang();
-}
-
-// navigation
-function showStep(n){
-  ["step1","step2","step3"].forEach(id=>{
-    document.getElementById(id).classList.add("hidden");
+function goPage(n){
+  ["page1","page2","page3"].forEach(p=>{
+    document.getElementById(p).classList.add("hidden");
   });
-  document.getElementById("step"+n).classList.remove("hidden");
+  document.getElementById("page"+n).classList.remove("hidden");
 }
 
-// timer
-function startPause(){
-  let t=30;
-  const timer=document.getElementById("timer");
-  timer.classList.remove("hidden");
-  timer.innerText=t;
-  const interval=setInterval(()=>{
-    t--;
-    timer.innerText=t;
-    if(t<=0){
-      clearInterval(interval);
-      timer.classList.add("hidden");
-      showStep(3);
-    }
-  },1000);
-}
+const results = [
+  {
+    label:"Current Frequency: Neutral / Mixed",
+    text:`आप इस समय किसी एक extreme frequency में नहीं हैं।
+यह स्थिति अक्सर तब होती है जब mind कई छोटे signals को एक साथ process कर रहा होता है।
+Technically, यह state तब बनती है जब attention stable है, लेकिन fully anchored नहीं है।
 
-applyLang();
+इस अवस्था में व्यक्ति न तो बहुत शांत होता है, न बहुत disturbed।
+Brain के perspective से देखें तो यह mid-level cognitive load की स्थिति है,
+जहाँ सोच चल रही होती है, लेकिन overwhelm नहीं होता।
+
+यह frequency खराब नहीं है।
+असल में, यहीं से clarity develop होती है।
+अगर चाहें तो इस समय बहुत बड़े निर्णय लेने की बजाय,
+थोड़ी observation की स्थिति में रहना उपयोगी होता है।
+
+ZQF इस state को “transition frequency” मानता है —
+जहाँ से व्यक्ति या तो noise में जा सकता है,
+या clarity की ओर move कर सकता है।
+`
+  },
+  {
+    label:"Current Frequency: Heavy / Diffused",
+    text:`इस समय आपकी frequency heavy दिखाई देती है।
+ऐसा अक्सर तब होता है जब mind unresolved information या emotional load carry कर रहा होता है।
+यह कोई कमजोरी नहीं है, बल्कि एक संकेत है कि system overloaded है।
+
+Technical रूप से, यह स्थिति तब बनती है जब attention fragmented हो जाता है
+और brain बार-बार past या future data को access करता है।
+इससे present moment की signal strength कम हो जाती है।
+
+इस अवस्था में problem solve करने की कोशिश
+अक्सर और अधिक थकान पैदा करती है।
+ZQF के अनुसार, इस frequency में सबसे उपयोगी चीज़
+कोई solution नहीं, बल्कि load को पहचानना है।
+
+जब awareness load को देख लेती है,
+तो system अपने आप recalibrate होने लगता है।
+`
+  },
+  {
+    label:"Current Frequency: Overactive / High Noise",
+    text:`आपकी वर्तमान frequency तेज और overactive प्रतीत होती है।
+यह स्थिति तब बनती है जब mind लगातार react कर रहा होता है,
+बिना pause के।
+
+Neurological स्तर पर,
+यह high stimulation और fast switching का संकेत है।
+Attention बार-बार एक thought से दूसरे thought पर jump करता है,
+जिससे internal noise बढ़ जाता है।
+
+इस frequency में व्यक्ति को लगता है कि उसे कुछ करना ही होगा,
+लेकिन paradox यह है कि action यहाँ clarity नहीं लाता।
+
+ZQF इस state को warning नहीं,
+बल्कि information मानता है।
+यह signal बताता है कि system को
+speed नहीं, grounding की आवश्यकता है।
+
+इस अवस्था में थोड़ा slowing down
+पूरे pattern को बदल सकता है।
+`
+  }
+];
+
+function showResult(i){
+  const r = results[i];
+  document.getElementById("freqLabel").innerText = r.label;
+  document.getElementById("resultText").innerText = r.text;
+  goPage(3);
+}
 </script>
 
 </body>
