@@ -1,176 +1,141 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Zero Quantum Frequency™ – Daily</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quantum Insights · Zero Quantum Frequency™</title>
 
 <style>
+:root{
+  --bg:#0b0b0f;
+  --card:#14141c;
+  --text:#ffffff;
+  --muted:#9a9aa3;
+  --accent:#6f7cff;
+}
+
+*{box-sizing:border-box;}
+
 body{
   margin:0;
-  background:#0a0f1c;
-  color:#e6e6e6;
-  font-family:system-ui,-apple-system,sans-serif;
+  height:100vh;
+  background:radial-gradient(circle at top, #151525, var(--bg));
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
 }
 
 .app{
-  max-width:480px;
-  margin:auto;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+  width:100%;
+  max-width:360px;
+  padding:20px;
 }
 
 .header{
   text-align:center;
-  padding:16px;
-  font-size:18px;
-  font-weight:600;
-  border-bottom:1px solid #1c2340;
+  margin-bottom:18px;
 }
 
-.content{
-  flex:1;
-  padding:18px;
-  line-height:1.75;
+.brand{
   font-size:15px;
+  letter-spacing:0.6px;
+  opacity:0.85;
 }
 
-.page{
-  display:none;
+.card{
+  background:linear-gradient(180deg,#1b1b28,#12121a);
+  border-radius:22px;
+  padding:28px 22px 32px;
+  box-shadow:0 20px 40px rgba(0,0,0,.45);
+  text-align:center;
 }
 
-.page.active{
-  display:block;
+.day{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:18px;
 }
 
-p{
-  margin-bottom:16px;
-  color:#d6d6d6;
+.message{
+  font-size:21px;
+  line-height:1.55;
+  margin-bottom:26px;
 }
 
-.nav{
-  display:flex;
-  justify-content:space-between;
-  padding:12px;
-  border-top:1px solid #1c2340;
-}
-
-.nav button{
-  background:#2a2f45;
-  color:#f5d88a;
-  border:none;
-  padding:10px 16px;
-  border-radius:6px;
+.pause{
   font-size:14px;
+  color:var(--accent);
+  letter-spacing:0.3px;
 }
 
 .footer{
   text-align:center;
   font-size:12px;
-  color:#777;
-  padding:10px;
+  color:var(--muted);
+  margin-top:18px;
 }
 </style>
-
-<script>
-let current = 1;
-function showPage(n){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('p'+n).classList.add('active');
-  current = n;
-}
-function nextPage(){
-  if(current < 3) showPage(current+1);
-}
-function prevPage(){
-  if(current > 1) showPage(current-1);
-}
-</script>
-
 </head>
+
 <body>
 
 <div class="app">
-
   <div class="header">
-    Quantum Insight
+    <div class="brand">Zero Quantum Frequency™</div>
   </div>
 
-  <div class="content">
-
-    <!-- PAGE 1 -->
-    <div id="p1" class="page active">
-      <p>
-        जब मन निरंतर विचारों में उलझा रहता है,
-        तब वह वास्तविकता को नहीं,
-        बल्कि अपने ही विचारों की प्रतिध्वनि को देखता है।
-      </p>
-
-      <p>
-        Quantum दृष्टि में,
-        शून्य कोई खालीपन नहीं है —
-        वह वह अवस्था है
-        जहाँ सभी संभावनाएँ मौन रूप में विद्यमान रहती हैं।
-      </p>
-
-      <p>
-        Zero Quantum Frequency™
-        उसी शून्य की ओर संकेत करता है।
-      </p>
-    </div>
-
-    <!-- PAGE 2 -->
-    <div id="p2" class="page">
-      <p>
-        अधिकांश मानसिक अशांति
-        परिस्थितियों से नहीं,
-        बल्कि उनके प्रति हमारी प्रतिक्रिया से जन्म लेती है।
-      </p>
-
-      <p>
-        जब प्रतिक्रिया रुकती है,
-        तब चेतना स्वतः संतुलन में आ जाती है।
-      </p>
-
-      <p>
-        यही वह बिंदु है
-        जहाँ विचार समाप्त होते हैं
-        और स्पष्टता प्रारंभ होती है।
-      </p>
-    </div>
-
-    <!-- PAGE 3 -->
-    <div id="p3" class="page">
-      <p>
-        Inner Order कोई प्रयास नहीं है,
-        बल्कि अनावश्यक संघर्ष का अभाव है।
-      </p>
-
-      <p>
-        जब व्यक्ति स्वयं को
-        हर स्थिति का केंद्र मानना छोड़ देता है,
-        तब जीवन सहज हो जाता है।
-      </p>
-
-      <p>
-        Zero Quantum Frequency™
-        इसी सहज अवस्था की स्मृति है।
-      </p>
-    </div>
-
-  </div>
-
-  <div class="nav">
-    <button onclick="prevPage()">◀ Prev</button>
-    <button onclick="nextPage()">Next ▶</button>
+  <div class="card">
+    <div class="day" id="dayText"></div>
+    <div class="message" id="freqText"></div>
+    <div class="pause">Pause for 30 seconds</div>
   </div>
 
   <div class="footer">
-    Zero Quantum Frequency™ · Clarity over noise
+    Return to zero.
   </div>
-
 </div>
+
+<script>
+const frequencies=[
+ "आज कुछ ठीक करने की ज़रूरत नहीं है।",
+ "जो है, बस उसे महसूस करो।",
+ "शांत रहने की कोशिश मत करो।",
+ "आज सिर्फ़ सुनो।",
+ "हर उत्तर ज़रूरी नहीं होता।",
+ "मौन भी एक स्थिति है।",
+ "कुछ न करना भी पर्याप्त है।",
+ "रुकना भी एक क्रिया है।",
+ "आज खुद पर कोई दबाव मत डालो।",
+ "जो चल रहा है, उसे चलने दो।",
+ "शांति को पकड़ने की कोशिश मत करो।",
+ "आज केवल उपस्थित रहो।",
+ "सब कुछ समझना ज़रूरी नहीं।",
+ "थोड़ी रिक्तता भी ठीक है।",
+ "उत्तर बाद में भी आ सकते हैं।",
+ "आज मौन को बोलने दो।",
+ "कुछ बदलने की जल्दी नहीं है।",
+ "रुकने में भी गति है।",
+ "आज स्वयं को हल्का होने दो।",
+ "खालीपन भी पूर्ण है।",
+ "हर दिन शून्य से नया है।"
+];
+
+let start=localStorage.getItem("zqf_start");
+if(!start){
+  start=new Date().toDateString();
+  localStorage.setItem("zqf_start",start);
+}
+
+const days=Math.floor(
+ (new Date()-new Date(start))/(1000*60*60*24)
+);
+
+const day=(days%21)+1;
+document.getElementById("dayText").innerText="Day "+day;
+document.getElementById("freqText").innerText=frequencies[day-1];
+</script>
 
 </body>
 </html>
