@@ -6,11 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
   height:100vh;
@@ -19,7 +15,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#ffffff;
+  color:#fff;
 }
 
 .app{
@@ -28,11 +24,26 @@ body{
   padding:20px;
 }
 
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+
 .brand{
-  text-align:center;
   font-size:15px;
   opacity:.85;
-  margin-bottom:18px;
+}
+
+.lang{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:10px;
+  border:1px solid #444;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
 }
 
 .card{
@@ -43,9 +54,7 @@ body{
   text-align:center;
 }
 
-.hidden{
-  display:none;
-}
+.hidden{display:none}
 
 .day{
   font-size:13px;
@@ -59,7 +68,7 @@ body{
   margin-bottom:26px;
 }
 
-button{
+button.main{
   background:#7a88ff;
   border:none;
   border-radius:14px;
@@ -87,61 +96,79 @@ button{
 <body>
 
 <div class="app">
-  <div class="brand">Zero Quantum Frequency™</div>
+  <div class="topbar">
+    <div class="brand">Zero Quantum Frequency™</div>
+    <button class="lang" onclick="toggleLang()">HI / EN</button>
+  </div>
 
   <!-- STEP 1 -->
   <div class="card" id="step1">
-    <div class="message">
-      Take one minute.<br>
-      Nothing else is required.
-    </div>
-    <button onclick="showStep(2)">Enter</button>
+    <div class="message" id="welcomeText"></div>
+    <button class="main" onclick="showStep(2)" id="enterBtn"></button>
   </div>
 
   <!-- STEP 2 -->
   <div class="card hidden" id="step2">
     <div class="day" id="dayText"></div>
     <div class="message" id="freqText"></div>
-    <button onclick="startPause()">Pause 30 seconds</button>
+    <button class="main" onclick="startPause()" id="pauseBtn"></button>
     <div class="timer hidden" id="timer">30</div>
   </div>
 
   <!-- STEP 3 -->
   <div class="card hidden" id="step3">
-    <div class="message">
-      Nothing to carry.<br>
-      Nothing to solve.
-    </div>
-    <button onclick="showStep(1)">Done</button>
+    <div class="message" id="closeText"></div>
+    <button class="main" onclick="showStep(1)" id="doneBtn"></button>
   </div>
 
-  <div class="footer">Return to zero.</div>
+  <div class="footer" id="footerText"></div>
 </div>
 
 <script>
-const frequencies = [
-  "आज कुछ ठीक करने की ज़रूरत नहीं है।",
-  "जो है, बस उसे महसूस करो।",
-  "शांत रहने की कोशिश मत करो।",
-  "आज सिर्फ़ सुनो।",
-  "हर उत्तर ज़रूरी नहीं होता।",
-  "मौन भी एक स्थिति है।",
-  "कुछ न करना भी पर्याप्त है।",
-  "रुकना भी एक क्रिया है।",
-  "आज स्वयं को हल्का होने दो।",
-  "जो चल रहा है, उसे चलने दो।",
-  "आज केवल उपस्थित रहो।",
-  "सब कुछ समझना ज़रूरी नहीं।",
-  "थोड़ी रिक्तता भी ठीक है।",
-  "उत्तर बाद में भी आ सकते हैं।",
-  "आज मौन को बोलने दो।",
-  "कुछ बदलने की जल्दी नहीं है।",
-  "रुकने में भी गति है।",
-  "खालीपन भी पूर्ण है।",
-  "आज कोई लक्ष्य नहीं है।",
-  "बस यहाँ रहो।",
-  "हर दिन शून्य से नया है।"
-];
+let lang = localStorage.getItem("zqf_lang") || "hi";
+
+const text = {
+  hi:{
+    welcome:"एक मिनट रुकिए।<br>और कुछ करने की ज़रूरत नहीं।",
+    enter:"शुरू करें",
+    pause:"30 सेकंड रुकें",
+    close:"कुछ पकड़ना नहीं है।<br>कुछ हल करना नहीं है।",
+    done:"पूरा हुआ",
+    footer:"शून्य की ओर लौटें।",
+    freq:[
+      "आज कुछ ठीक करने की ज़रूरत नहीं है।",
+      "जो है, बस उसे महसूस करो।",
+      "शांत रहने की कोशिश मत करो।",
+      "आज सिर्फ़ सुनो।",
+      "हर उत्तर ज़रूरी नहीं होता।",
+      "मौन भी एक स्थिति है।",
+      "कुछ न करना भी पर्याप्त है।",
+      "रुकना भी एक क्रिया है।",
+      "आज स्वयं को हल्का होने दो।",
+      "हर दिन शून्य से नया है।"
+    ]
+  },
+  en:{
+    welcome:"Take one minute.<br>Nothing else is required.",
+    enter:"Enter",
+    pause:"Pause 30 seconds",
+    close:"Nothing to carry.<br>Nothing to solve.",
+    done:"Done",
+    footer:"Return to zero.",
+    freq:[
+      "There is nothing to fix today.",
+      "Just notice what is.",
+      "Do not try to be calm.",
+      "Just listen today.",
+      "Not every answer is needed.",
+      "Silence is also a state.",
+      "Doing nothing is enough.",
+      "Pausing is also an action.",
+      "Let yourself feel lighter today.",
+      "Each day begins from zero."
+    ]
+  }
+};
 
 // day logic
 let start = localStorage.getItem("zqf_start");
@@ -149,41 +176,53 @@ if(!start){
   start = new Date().toDateString();
   localStorage.setItem("zqf_start", start);
 }
+const diff = Math.floor((new Date()-new Date(start))/(1000*60*60*24));
+const day = (diff % 10);
 
-const diff = Math.floor(
-  (new Date() - new Date(start)) / (1000 * 60 * 60 * 24)
-);
+// apply text
+function applyLang(){
+  localStorage.setItem("zqf_lang",lang);
+  document.getElementById("welcomeText").innerHTML=text[lang].welcome;
+  document.getElementById("enterBtn").innerText=text[lang].enter;
+  document.getElementById("pauseBtn").innerText=text[lang].pause;
+  document.getElementById("closeText").innerHTML=text[lang].close;
+  document.getElementById("doneBtn").innerText=text[lang].done;
+  document.getElementById("footerText").innerText=text[lang].footer;
+  document.getElementById("dayText").innerText="Day "+(day+1);
+  document.getElementById("freqText").innerText=text[lang].freq[day];
+}
 
-const day = (diff % 21) + 1;
-
-document.getElementById("dayText").innerText = "Day " + day;
-document.getElementById("freqText").innerText = frequencies[day - 1];
+function toggleLang(){
+  lang = lang==="hi" ? "en" : "hi";
+  applyLang();
+}
 
 // navigation
 function showStep(n){
-  document.getElementById("step1").classList.add("hidden");
-  document.getElementById("step2").classList.add("hidden");
-  document.getElementById("step3").classList.add("hidden");
-  document.getElementById("step" + n).classList.remove("hidden");
+  ["step1","step2","step3"].forEach(id=>{
+    document.getElementById(id).classList.add("hidden");
+  });
+  document.getElementById("step"+n).classList.remove("hidden");
 }
 
 // timer
 function startPause(){
-  let t = 30;
-  const timer = document.getElementById("timer");
+  let t=30;
+  const timer=document.getElementById("timer");
   timer.classList.remove("hidden");
-  timer.innerText = t;
-
-  const interval = setInterval(()=>{
+  timer.innerText=t;
+  const interval=setInterval(()=>{
     t--;
-    timer.innerText = t;
-    if(t <= 0){
+    timer.innerText=t;
+    if(t<=0){
       clearInterval(interval);
       timer.classList.add("hidden");
       showStep(3);
     }
   },1000);
 }
+
+applyLang();
 </script>
 
 </body>
