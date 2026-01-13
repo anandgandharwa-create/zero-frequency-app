@@ -1,222 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<title>Zero Quantum Frequency™</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>ANTAR DARPAN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, #0B1020, #050814);
+      color: #FFFFFF;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
 
-body{
-  height:100vh;
-  background:radial-gradient(circle at top,#1c1c30,#0b0b12);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  color:#ffffff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
+    .container {
+      max-width: 640px;
+      margin: auto;
+      padding: 24px;
+    }
 
-.app{
-  width:100%;
-  max-width:380px;
-  padding:20px;
-}
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
 
-.header{
-  text-align:center;
-  font-size:16px;
-  opacity:.85;
-  margin-bottom:18px;
-}
+    .tagline {
+      text-align: center;
+      font-size: 15px;
+      color: #CCCCCC;
+      margin-bottom: 28px;
+    }
 
-.card{
-  background:linear-gradient(180deg,#1d1d2e,#14141f);
-  border-radius:22px;
-  padding:26px 22px 30px;
-  box-shadow:0 25px 45px rgba(0,0,0,.45);
-}
+    textarea {
+      width: 100%;
+      height: 160px;
+      padding: 16px;
+      font-size: 16px;
+      line-height: 1.6;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      resize: none;
+      box-sizing: border-box;
+    }
 
-.hidden{display:none}
+    textarea::placeholder {
+      color: #888888;
+    }
 
-.title{
-  font-size:22px;
-  line-height:1.5;
-  margin-bottom:22px;
-  text-align:center;
-}
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: 600;
+      border-radius: 28px;
+      border: none;
+      background: linear-gradient(90deg, #6A4CFF, #4B2BFF);
+      color: #FFFFFF;
+      cursor: pointer;
+    }
 
-.option{
-  width:100%;
-  margin:10px 0;
-  padding:14px;
-  border-radius:14px;
-  border:1px solid #444;
-  background:transparent;
-  color:#fff;
-  font-size:15px;
-  cursor:pointer;
-}
+    button:active {
+      opacity: 0.9;
+    }
 
-.option:hover{
-  background:#7a88ff;
-  border-color:#7a88ff;
-}
+    .output {
+      display: none;
+      margin-top: 26px;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 16px;
+      line-height: 1.7;
+    }
 
-.section{
-  margin-bottom:16px;
-}
+    .divider {
+      margin: 14px 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
 
-.section h4{
-  font-size:13px;
-  color:#7a88ff;
-  margin-bottom:6px;
-}
-
-.section p{
-  font-size:14.5px;
-  line-height:1.6;
-  opacity:.95;
-}
-
-.footer{
-  text-align:center;
-  font-size:12px;
-  opacity:.55;
-  margin-top:18px;
-}
-</style>
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 12px;
+      color: #999999;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="app">
-  <div class="header">Zero Quantum Frequency™</div>
+  <div class="container">
 
-  <!-- PAGE 1 -->
-  <div class="card" id="page1">
-    <div class="title">
-      Check your current<br>inner frequency
+    <h1>ANTAR DARPAN</h1>
+    <div class="tagline">एक प्रश्न नहीं — एक दर्पण</div>
+
+    <textarea id="userInput" placeholder="2–3 पंक्तियों में अपनी वर्तमान स्थिति लिखें…  
+बिना सजाए, बिना सोचे।"></textarea>
+
+    <button onclick="showReflection()">स्थिति देखें</button>
+
+    <div id="result" class="output"></div>
+
+    <div class="footer">
+      यह ऐप सलाह, निदान या उपचार नहीं देता।<br>
+      यह केवल आत्म-अवलोकन हेतु है।
     </div>
-    <button class="option" onclick="goPage(2)">
-      Check Your Frequency
-    </button>
+
   </div>
 
-  <!-- PAGE 2 -->
-  <div class="card hidden" id="page2">
-    <div class="title">अपनी वर्तमान स्थिति चुनें</div>
-    <button class="option" onclick="showResult(0)">अपनी अनुसार / Neutral</button>
-    <button class="option" onclick="showResult(1)">मन भारी / उलझा हुआ</button>
-    <button class="option" onclick="showResult(2)">मन तेज / बेचैन</button>
-  </div>
+  <script>
+    function showReflection() {
+      const text = document.getElementById("userInput").value.trim();
+      if (text.length < 5) {
+        alert("कृपया कुछ शब्द लिखें।");
+        return;
+      }
 
-  <!-- PAGE 3 -->
-  <div class="card hidden" id="page3">
-    <div class="section">
-      <h4 id="freqLabel"></h4>
-    </div>
+      const output = `
+        <strong>आपकी वर्तमान स्थिति</strong>
+        <div class="divider"></div>
+        आपके शब्द यह संकेत देते हैं कि इस समय भीतर गति है,
+        पर स्पष्ट दिशा अभी प्रकट नहीं हुई है।
+        <br><br>
+        <strong>Zero Quantum Frequency™</strong>
+        <div class="divider"></div>
+        Frequency भावना नहीं है —  
+        यह उस अवस्था का संकेत है जहाँ मन प्रतिक्रिया करता है।
+        <br><br>
+        इस क्षण प्रयास नहीं,  
+        केवल देखना ही पर्याप्त है।
+      `;
 
-    <div class="section">
-      <h4>Technical Insight</h4>
-      <p id="techText"></p>
-    </div>
-
-    <div class="section">
-      <h4>Awareness Insight</h4>
-      <p id="gyanText"></p>
-    </div>
-
-    <div class="section">
-      <h4>Gentle Guidance</h4>
-      <p id="guideText"></p>
-    </div>
-
-    <button class="option" onclick="goPage(1)">Check Again</button>
-  </div>
-
-  <div class="footer">Frequency is not emotion. It is signal.</div>
-</div>
-
-<script>
-function goPage(n){
-  ["page1","page2","page3"].forEach(p=>{
-    document.getElementById(p).classList.add("hidden");
-  });
-  document.getElementById("page"+n).classList.remove("hidden");
-}
-
-function pick(arr){
-  return arr[Math.floor(Math.random()*arr.length)];
-}
-
-const data = [
-  {
-    label:"Current Frequency: Neutral / Mixed",
-    tech:[
-      "This state indicates moderate cognitive load where attention is active but not overloaded.",
-      "Neurologically, this reflects a balanced interaction between focus and background processing.",
-      "This frequency often appears during transitions between tasks or thoughts."
-    ],
-    gyan:[
-      "यह अवस्था कोई समस्या नहीं है। यह बदलाव का संकेत है।",
-      "यहीं से स्पष्टता या भ्रम – दोनों की दिशा तय होती है।",
-      "Neutral होना stagnation नहीं, potential है।"
-    ],
-    guide:[
-      "इस समय observation को action से पहले रखें।",
-      "बड़े निर्णय टालना उपयोगी हो सकता है।",
-      "कुछ क्षण बस देखने दें, बदलने की ज़रूरत नहीं।"
-    ]
-  },
-  {
-    label:"Current Frequency: Heavy / Diffused",
-    tech:[
-      "This suggests fragmented attention caused by unresolved mental or emotional load.",
-      "The brain is processing multiple background loops, reducing present clarity.",
-      "Such states often arise from information overload rather than weakness."
-    ],
-    gyan:[
-      "भारीपन विरोध करने से नहीं, देखने से हल्का होता है।",
-      "यह संकेत है कि system अधिक उठा रहा है।",
-      "हर बोझ को तुरंत उतारना आवश्यक नहीं।"
-    ],
-    guide:[
-      "इस अवस्था में खुद से अपेक्षा कम रखें।",
-      "अभी समाधान नहीं, space ज़्यादा उपयोगी है।",
-      "थोड़ा slowing down पूरी दिशा बदल सकता है।"
-    ]
-  },
-  {
-    label:"Current Frequency: Overactive / High Noise",
-    tech:[
-      "This reflects high stimulation and rapid thought-switching patterns.",
-      "Attention is reactive, not settled, leading to internal noise.",
-      "The system is fast, but not grounded."
-    ],
-    gyan:[
-      "तेज़ी हमेशा स्पष्टता नहीं लाती।",
-      "Noise भी एक signal है, शत्रु नहीं।",
-      "रुकना हार नहीं, recalibration है।"
-    ],
-    guide:[
-      "इस समय speed नहीं, grounding सहायक है।",
-      "एक छोटा pause पूरे loop को बदल सकता है।",
-      "कम input ज़्यादा clarity ला सकता है।"
-    ]
-  }
-];
-
-function showResult(i){
-  const d = data[i];
-  document.getElementById("freqLabel").innerText = d.label;
-  document.getElementById("techText").innerText = pick(d.tech);
-  document.getElementById("gyanText").innerText = pick(d.gyan);
-  document.getElementById("guideText").innerText = pick(d.guide);
-  goPage(3);
-}
-</script>
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = output;
+      resultDiv.style.display = "block";
+    }
+  </script>
 
 </body>
 </html>
