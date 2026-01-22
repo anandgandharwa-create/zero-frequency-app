@@ -1,8 +1,12 @@
-/* ===== Zero Quantum Frequency™ Dark UI ===== */
+/* ===== Zero Quantum Frequency™ Mobile First Dark UI ===== */
 
 * {
   box-sizing: border-box;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+html {
+  font-size: 18px;   /* BASE SCALE */
 }
 
 body {
@@ -14,48 +18,48 @@ body {
   text-align: center;
 }
 
-/* Title */
+/* Main Title */
 h1 {
-  font-size: 30px;
-  margin-top: 40px;
-  margin-bottom: 15px;
+  font-size: 2rem;     /* ≈ 36px */
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 700;
   color: #f5d98b;
 }
 
 /* Tagline */
 p {
-  font-size: 16px;
+  font-size: 1.1rem;   /* ≈ 20px */
   color: #ffffff;
-  margin-bottom: 35px;
+  margin-bottom: 2.5rem;
 }
 
 /* Buttons */
 button {
-  width: 85%;
-  max-width: 360px;
-  padding: 16px;
-  margin: 12px auto;
+  width: 90%;
+  max-width: 420px;
+  padding: 1.2rem;
+  margin: 1rem auto;
   display: block;
-  font-size: 20px;
+  font-size: 1.25rem;   /* ≈ 22–24px */
   font-weight: 600;
   color: #f5d98b;
   background: #000000;
   border: none;
-  border-radius: 10px;
+  border-radius: 14px;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  box-shadow: 0 0 16px rgba(0,0,0,0.7);
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-/* Footer text */
+/* Footer */
 footer {
-  margin-top: 50px;
-  font-size: 14px;
+  margin-top: 3rem;
+  font-size: 0.95rem;
   color: #ffffff;
   opacity: 0.85;
-  padding-bottom: 30px;
+  padding-bottom: 2rem;
 }
