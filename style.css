@@ -1,0 +1,61 @@
+/* ===== Zero Quantum Frequency™ Dark UI ===== */
+
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #071b2d, #020b16);
+  color: #f5d98b;
+  text-align: center;
+}
+
+/* Title */
+h1 {
+  font-size: 30px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #f5d98b;
+}
+
+/* Tagline */
+p {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 35px;
+}
+
+/* Buttons */
+button {
+  width: 85%;
+  max-width: 360px;
+  padding: 16px;
+  margin: 12px auto;
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f5d98b;
+  background: #000000;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Footer text */
+footer {
+  margin-top: 50px;
+  font-size: 14px;
+  color: #ffffff;
+  opacity: 0.85;
+  padding-bottom: 30px;
+}
