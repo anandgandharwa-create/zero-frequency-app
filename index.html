@@ -1,148 +1,22 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <title>ANTAR DARPAN</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(180deg, #0B1020, #050814);
-      color: #FFFFFF;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .container {
-      max-width: 640px;
-      margin: auto;
-      padding: 24px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 6px;
-      letter-spacing: 1px;
-    }
-
-    .tagline {
-      text-align: center;
-      font-size: 15px;
-      color: #CCCCCC;
-      margin-bottom: 28px;
-    }
-
-    textarea {
-      width: 100%;
-      height: 160px;
-      padding: 16px;
-      font-size: 16px;
-      line-height: 1.6;
-      border-radius: 12px;
-      border: none;
-      outline: none;
-      resize: none;
-      box-sizing: border-box;
-    }
-
-    textarea::placeholder {
-      color: #888888;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 22px;
-      padding: 16px;
-      font-size: 17px;
-      font-weight: 600;
-      border-radius: 28px;
-      border: none;
-      background: linear-gradient(90deg, #6A4CFF, #4B2BFF);
-      color: #FFFFFF;
-      cursor: pointer;
-    }
-
-    button:active {
-      opacity: 0.9;
-    }
-
-    .output {
-      display: none;
-      margin-top: 26px;
-      padding: 18px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.06);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .divider {
-      margin: 14px 0;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .footer {
-      margin-top: 32px;
-      text-align: center;
-      font-size: 12px;
-      color: #999999;
-      line-height: 1.5;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Zero Quantum Frequency™</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<h1>Zero Quantum Frequency™</h1>
+<p>🧘 RETURN TO YOUR ORIGINAL STATE 🧘</p>
 
-  <div class="container">
+<button onclick="location.href='about.html'">About Us</button>
+<button onclick="location.href='books.html'">Books</button>
+<button onclick="location.href='courses.html'">Courses</button>
+<button onclick="location.href='krishna.html'">Krishna Code</button>
+<button onclick="location.href='contact.html'">Contact</button>
 
-    <h1>ANTAR DARPAN</h1>
-    <div class="tagline">एक प्रश्न नहीं — एक दर्पण</div>
-
-    <textarea id="userInput" placeholder="2–3 पंक्तियों में अपनी वर्तमान स्थिति लिखें…  
-बिना सजाए, बिना सोचे।"></textarea>
-
-    <button onclick="showReflection()">स्थिति देखें</button>
-
-    <div id="result" class="output"></div>
-
-    <div class="footer">
-      यह ऐप सलाह, निदान या उपचार नहीं देता।<br>
-      यह केवल आत्म-अवलोकन हेतु है।
-    </div>
-
-  </div>
-
-  <script>
-    function showReflection() {
-      const text = document.getElementById("userInput").value.trim();
-      if (text.length < 5) {
-        alert("कृपया कुछ शब्द लिखें।");
-        return;
-      }
-
-      const output = `
-        <strong>आपकी वर्तमान स्थिति</strong>
-        <div class="divider"></div>
-        आपके शब्द यह संकेत देते हैं कि इस समय भीतर गति है,
-        पर स्पष्ट दिशा अभी प्रकट नहीं हुई है।
-        <br><br>
-        <strong>Zero Quantum Frequency™</strong>
-        <div class="divider"></div>
-        Frequency भावना नहीं है —  
-        यह उस अवस्था का संकेत है जहाँ मन प्रतिक्रिया करता है।
-        <br><br>
-        इस क्षण प्रयास नहीं,  
-        केवल देखना ही पर्याप्त है।
-      `;
-
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = output;
-      resultDiv.style.display = "block";
-    }
-  </script>
-
+<script src="app.js"></script>
 </body>
 </html>
