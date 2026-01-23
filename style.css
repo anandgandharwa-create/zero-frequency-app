@@ -91,3 +91,13 @@ footer {
   cursor: pointer;
   font-weight: 500;
 }
+/* ===== INSTALL APP BUTTON ===== */
+
+#installBtn {
+  background: linear-gradient(135deg, #ffcc66, #f5d98b);
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  box-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
+}
