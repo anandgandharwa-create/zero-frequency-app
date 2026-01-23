@@ -1,9 +1,10 @@
 {
   "name": "Zero Quantum Frequency™",
-  "start_url": "index.html",
+  "short_name": "ZeroQ",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#3b0a78",
+  "background_color": "#020b16",
+  "theme_color": "#3b0452",
   "icons": [
     {
       "src": "icon-192.png",
