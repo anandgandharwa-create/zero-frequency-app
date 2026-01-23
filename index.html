@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#3b0a78">
-<title>Zero Quantum Frequency™</title>
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
+  <title>Zero Quantum Frequency™</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="home-page">
+
+  <!-- TOP BAR -->
   <div class="topbar">
-  <div></div>
-  <div class="topbar-title">Home</div>
-  <div></div>
-</div>
+    <div class="topbar-title">Home</div>
+  </div>
 
-<h1>Zero Quantum Frequency™</h1>
-<p>🧘 RETURN TO YOUR ORIGINAL STATE 🧘</p>
+  <!-- MAIN TITLE (FORCED SINGLE LINE) -->
+  <h1 style="
+    white-space: nowrap;
+    font-size: 1.6rem;
+    max-width: 100%;
+  ">
+    Zero Quantum Frequency™
+  </h1>
 
-<button onclick="location.href='about.html'">About Us</button>
-<button onclick="location.href='books.html'">Books</button>
-<button onclick="location.href='courses.html'">Courses</button>
-<button onclick="location.href='krishna.html'">Krishna Code</button>
-<button onclick="location.href='contact.html'">Contact</button>
-<button id="installBtn" style="display:none;">
-⬇️ Install App
-</button>
+  <p>🧘 RETURN TO YOUR ORIGINAL STATE 🧘</p>
 
-<script src="app.js"></script>
+  <!-- BUTTONS -->
+  <button onclick="location.href='about.html'">About Us</button>
+  <button onclick="location.href='books.html'">Books</button>
+  <button onclick="location.href='courses.html'">Courses</button>
+  <button onclick="location.href='krishna.html'">Krishna Code</button>
+  <button onclick="location.href='contact.html'">Contact</button>
+
+  <!-- INSTALL APP BUTTON -->
+  <button id="installBtn" style="display:none;">⬇️ Install App</button>
+
+  <!-- FOOTER -->
   <footer>
-  Zero Quantum Frequency™ © – A Wisdom Offering by Gandharwa Anand
-</footer>
+    Zero Quantum Frequency™ © – A Wisdom Offering by Gandharwa Anand
+  </footer>
 
+  <script src="app.js"></script>
 </body>
 </html>
