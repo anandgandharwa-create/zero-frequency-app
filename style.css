@@ -1,121 +1,115 @@
-/* ===== Zero Quantum Frequency™ Mobile First Dark UI ===== */
+/* =========================================
+   ZERO QUANTUM FREQUENCY™
+   Mobile First – Dark UI (FINAL STABLE)
+========================================= */
+
+/* ---- ROOT SCROLL & WIDTH FIX ---- */
 html, body {
+  margin: 0;
+  padding: 0;
   max-width: 100%;
   overflow-x: hidden !important;
-}
-
-* {
   box-sizing: border-box;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-html {
-  font-size: 18px;   /* BASE SCALE */
+/* ---- GLOBAL RESET ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
+/* ---- BODY BACKGROUND ---- */
 body {
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
   background: linear-gradient(180deg, #071b2d, #020b16);
   color: #f5d98b;
   text-align: center;
 }
 
-/* Main Title */
-h1 {
-  font-size: 2rem;     /* ≈ 36px */
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
+/* ---- TOP BAR ---- */
+.topbar {
+  background: linear-gradient(180deg, #5b0a78, #3b0452);
+  padding: 14px 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ---- HOME PAGE WRAPPER ---- */
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ---- MAIN TITLE (HOME) ---- */
+.home-page h1 {
+  font-size: 1.4rem;              /* perfectly safe */
+  margin: 2.2rem auto 1rem;
+  padding: 0 18px;
+  max-width: calc(100% - 36px);
+  white-space: nowrap;
   color: #f5d98b;
 }
 
-/* Tagline */
-p {
-  font-size: 1.1rem;   /* ≈ 20px */
+/* ---- SUB TITLE ---- */
+.home-page p {
+  font-size: 0.95rem;
+  padding: 0 16px;
+  margin-bottom: 2rem;
   color: #ffffff;
-  margin-bottom: 2.5rem;
 }
 
-/* Buttons */
+/* ---- BUTTONS (GLOBAL) ---- */
 button {
+  display: block;
   width: 90%;
   max-width: 420px;
-  padding: 1.2rem;
-  margin: 1rem auto;
-  display: block;
-  font-size: 1.25rem;   /* ≈ 22–24px */
+  margin: 14px auto;
+  padding: 18px 12px;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #f5d98b;
   background: #000000;
   border: none;
-  border-radius: 14px;
+  border-radius: 16px;
   cursor: pointer;
-  box-shadow: 0 0 16px rgba(0,0,0,0.7);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
 }
 
-button:active {
-  transform: scale(0.97);
-}
-
-/* Footer */
-footer {
-  margin-top: 3rem;
-  font-size: 0.95rem;
-  color: #ffffff;
-  opacity: 0.85;
-  padding-bottom: 2rem;
-}
-/* ===== TOP BAR (APP STYLE) ===== */
-
-/* ===== TOP BAR (CENTER TITLE ONLY) ===== */
-
-.topbar {
-  width: 100%;
-  background: #4b0082; /* Purple */
-  color: #ffffff;
-  padding: 16px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;   /* 👈 TITLE CENTER */
-  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-}
-
-.topbar-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-
-.back-btn {
-  font-size: 1rem;
-  color: #ffffff;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-}
-/* ===== INSTALL APP BUTTON ===== */
-
+/* ---- INSTALL APP BUTTON ---- */
 #installBtn {
   background: linear-gradient(135deg, #ffcc66, #f5d98b);
   color: #000000;
   font-weight: 700;
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  box-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
-}
-.home-page {
-  overflow-x: hidden;
 }
 
-.home-page h1 {
-  font-size: 1.42rem;
-  margin: 0 auto;
-  padding: 0 18px;
-  max-width: calc(100% - 36px);
-  white-space: nowrap;
-  box-sizing: border-box;
+/* ---- BACK BUTTON (IF ANY) ---- */
+.back-btn {
+  background: transparent;
+  color: #ffffff;
+  font-size: 1rem;
+  border: none;
+}
+
+/* ---- PAGE HEADINGS (OTHER PAGES) ---- */
+h2 {
+  font-size: 1.3rem;
+  margin-top: 2.2rem;
+  color: #f5d98b;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  margin: 2.5rem 0 1.5rem;
+  font-size: 0.75rem;
+  color: #cccccc;
+  padding: 0 12px;
+}
+
+/* ---- DESKTOP SAFETY ---- */
+@media (min-width: 768px) {
+  .home-page h1 {
+    font-size: 1.8rem;
+    white-space: normal;
+  }
 }
