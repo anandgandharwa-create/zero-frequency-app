@@ -1,4 +1,8 @@
 /* ===== Zero Quantum Frequency™ Mobile First Dark UI ===== */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
 
 * {
   box-sizing: border-box;
@@ -108,10 +112,10 @@ footer {
 }
 
 .home-page h1 {
-  font-size: 1.45rem;
-  padding-left: 14px;
-  padding-right: 14px;
+  font-size: 1.42rem;
+  margin: 0 auto;
+  padding: 0 18px;
+  max-width: calc(100% - 36px);
   white-space: nowrap;
-  max-width: 100%;
   box-sizing: border-box;
 }
