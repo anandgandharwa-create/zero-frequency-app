@@ -1,22 +1,17 @@
-let deferredPrompt = null;
+let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
 
-  const installBtn = document.getElementById("installBtn");
-  if (installBtn) {
-    installBtn.style.display = "block";
-
-    installBtn.addEventListener("click", async () => {
-      if (!deferredPrompt) return;
-
+  const btn = document.getElementById("installBtn");
+  if (btn) {
+    btn.style.display = "block";
+    btn.onclick = async () => {
       deferredPrompt.prompt();
-
-      const choiceResult = await deferredPrompt.userChoice;
+      await deferredPrompt.userChoice;
       deferredPrompt = null;
-
-      installBtn.style.display = "none";
-    });
+      btn.style.display = "none";
+    };
   }
 });
