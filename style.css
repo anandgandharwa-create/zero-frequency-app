@@ -113,3 +113,23 @@ footer {
     white-space: normal;
   }
 }
+/* ===== INSTALL APP SOFT ANIMATION ===== */
+
+@keyframes softPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 204, 102, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(255, 204, 102, 0.8);
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 204, 102, 0.4);
+    transform: scale(1);
+  }
+}
+
+#installBtn {
+  animation: softPulse 2.4s ease-in-out infinite;
+}
