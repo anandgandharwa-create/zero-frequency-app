@@ -103,8 +103,9 @@ footer {
   margin-top: 2rem;
   box-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
 }
-.home-page {
-  transform: scale(0.95);
-  transform-origin: top center;
+.home-page h1 {
+  font-size: 1.7em;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
 }
 
