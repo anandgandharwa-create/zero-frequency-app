@@ -103,9 +103,8 @@ footer {
   margin-top: 2rem;
   box-shadow: 0 0 20px rgba(255, 204, 102, 0.6);
 }
-/* ===== HOME PAGE TITLE FIX (ONE LINE) ===== */
-
-.home-page h1 {
-  font-size: 1.75em;   /* पहले 2em था, अब थोड़ा छोटा */
-  line-height: 1.2;
+.home-page {
+  transform: scale(0.95);
+  transform-origin: top center;
 }
+
